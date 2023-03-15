@@ -1,0 +1,22 @@
+FROM alpine/git
+
+RUN git clone https://github.com/academiaonline/dockercoins 
+
+
+
+FROM python:alpine
+
+RUN apk add php && pip install redis && pip install requests
+
+COPY --from=0 /dockercoins /
+
+
+
+FROM scratch
+
+COPY --from=1 / /
+
+ENTRYPOINT python
+
+CMD worker.py
+

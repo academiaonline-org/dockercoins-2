@@ -1,0 +1,9 @@
+FROM python:alpine
+
+RUN apk add php && pip install redis && pip install requests
+
+COPY . .
+
+ENTRYPOINT python
+
+CMD worker.py

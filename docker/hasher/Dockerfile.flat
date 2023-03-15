@@ -1,0 +1,12 @@
+FROM ruby:alpine
+RUN apk add build-base && gem install sinatra && gem install thin
+COPY hasher.rb .
+ 
+FROM scratch
+COPY --from=0 / /
+ENV GEM_HOME /usr/local/bundle
+ENV PATH $GEM_HOME/bin:$PATH
+ 
+CMD ["/hasher.rb"]
+ENTRYPOINT ["ruby"]
+EXPOSE 8080
