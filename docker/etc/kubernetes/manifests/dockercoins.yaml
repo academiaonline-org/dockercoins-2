@@ -41,10 +41,10 @@ spec:
           timeoutSeconds: 1
         resources:
           limits:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
           requests:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
 ---
 apiVersion: apps/v1
@@ -86,10 +86,10 @@ spec:
           timeoutSeconds: 1
         resources:
           limits:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
           requests:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
 ---
 apiVersion: apps/v1
@@ -130,10 +130,10 @@ spec:
           timeoutSeconds: 1
         resources:
           limits:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
           requests:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
         volumeMounts:
         - name: redis
@@ -182,10 +182,10 @@ spec:
           timeoutSeconds: 1
         resources:
           limits:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
           requests:
-            cpu: 100m
+            cpu: 10m
             memory: 100M        
 ---
 apiVersion: apps/v1
@@ -208,10 +208,10 @@ spec:
         imagePullPolicy: Always
         resources:
           limits:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
           requests:
-            cpu: 100m
+            cpu: 10m
             memory: 100M
 ---
 apiVersion: networking.k8s.io/v1
@@ -336,18 +336,6 @@ spec:
   policyTypes:
   - Ingress
 #  - Egress
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-  - ReadWriteOnce
-  hostPath:
-    path: /tmp/redis
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
